@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Cynosure</string>
+    <string  name = "wallpapers" > Живые обои </string >
+
+    <string  name = "wallpaper_cynosure" > Cynosure </string >
+
+    <string  name = "cynosure_settings" > Настройки </string >
 </resources>

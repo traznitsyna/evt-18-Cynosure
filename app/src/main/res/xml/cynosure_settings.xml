@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/cynosure_settings">
+	<com.example.cynosure.SettableMappedIndexPreference
+		android:widgetLayout="@layout/settable_preference"
+		android:key="count"
+		android:title="Количество">
+	</com.example.cynosure.SettableMappedIndexPreference>
+	<com.example.cynosure.SettableMappedIndexPreference
+		android:widgetLayout="@layout/settable_preference"
+		android:key="effect_type"
+		android:title="Смена эффекта">
+	</com.example.cynosure.SettableMappedIndexPreference>
+
+	<PreferenceCategory
+		android:title="Цвет">
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="min_transparency"
+			android:title="Минимальная прозрачность">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="max_transparency"
+			android:title="Максимальная прозрачность">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="brightness"
+			android:title="Яркость">
+		</com.example.cynosure.SettableMappedIndexPreference>
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="Размер">
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="min_radius"
+			android:title="Минимальный размер">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="max_radius"
+			android:title="Максимальный размер">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="min_outline_width"
+			android:title="Минимальная ширина контура">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="max_outline_width"
+			android:title="Максимальная ширина контура">
+		</com.example.cynosure.SettableMappedIndexPreference>
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="Скорость">
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="min_speed"
+			android:title="Минимальная скорость">
+		</com.example.cynosure.SettableMappedIndexPreference>
+		<com.example.cynosure.SettableMappedIndexPreference
+			android:widgetLayout="@layout/settable_preference"
+			android:key="max_speed"
+			android:title="Максимальная скорость">
+		</com.example.cynosure.SettableMappedIndexPreference>
+
+	</PreferenceCategory>
+
+</PreferenceScreen>
