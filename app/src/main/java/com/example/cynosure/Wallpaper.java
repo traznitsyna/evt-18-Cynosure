@@ -409,6 +409,39 @@ public class Wallpaper extends WallpaperService {
 					figure.y = figure.y + figure.ydelta;
 					figure.y = figure.y + figure.ydelta;
 				}
+				figure.y = figure.y + figure.ydelta;
+				if (
+						(figure.ydelta > 0.0f && figure.y > mHeight)
+								||
+								(figure.ydelta < 0.0f && figure.y < 0.0f))
+				{
+					figure.ydelta = -figure.ydelta;
+					figure.y = figure.y + figure.ydelta;
+					figure.y = figure.y + figure.ydelta;
+				}
+
+				figure.radius = figure.radius + figure.radiusdelta;
+				if (
+						(figure.radiusdelta > 0.0f && figure.radius > MAX_RADIUS)
+								||
+								(figure.radiusdelta < 0.0f && figure.radius < MIN_RADIUS))
+				{
+					figure.radiusdelta = -figure.radiusdelta;
+					figure.radius = figure.radius + figure.radiusdelta;
+					figure.radius = figure.radius + figure.radiusdelta;
+				}
+
+				figure.alpha = figure.alpha + figure.alphadelta;
+				if (
+						(figure.alphadelta > 0 && figure.alpha > MAX_TRANSPARENCY)
+								||
+								(figure.alphadelta < 0 && figure.alpha < MIN_TRANSPARENCY))
+				{
+					figure.alphadelta = -figure.alphadelta;
+					figure.alpha = figure.alpha + figure.alphadelta;
+					figure.alpha = figure.alpha + figure.alphadelta;
+				}
+
 				populateFigure(figure);
 			}
 
