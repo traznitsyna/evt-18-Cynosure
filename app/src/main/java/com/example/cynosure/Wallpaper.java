@@ -31,6 +31,18 @@ public class Wallpaper extends WallpaperService {
 	public static final int DEFAULT_BRIGHTNESS = 50;
 	public static final int DEFAULT_FRAME_RATE = 29;
 
+	public static final int FIGURE_COUNT_MAX_INDEX = 990;
+	public static final int EFFECT_TYPE_MAX_INDEX = 2;
+	public static final int MIN_RADIUS_MAX_INDEX = 59;
+	public static final int MAX_RADIUS_MAX_INDEX = 199;
+	public static final int MIN_OUTLINE_WIDTH_MAX_INDEX = 90;
+	public static final int MAX_OUTLINE_WIDTH_MAX_INDEX = 90;
+	public static final int MIN_TRANSPARENCY_MAX_INDEX = 255;
+	public static final int MAX_TRANSPARENCY_MAX_INDEX = 255;
+	public static final int MIN_SPEED_MAX_INDEX = 70;
+	public static final int MAX_SPEED_MAX_INDEX = 70;
+	public static final int BRIGHTNESS_MAX_INDEX = 100;
+
 	private ArrayList<Figure> figures = new ArrayList<Figure>();
 	private final Handler mHandler = new Handler();
 	private Random random = new Random(System.currentTimeMillis());

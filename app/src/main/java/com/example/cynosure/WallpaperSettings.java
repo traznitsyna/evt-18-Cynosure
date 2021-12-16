@@ -1,20 +1,21 @@
 package com.example.cynosure;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.example.cynosure.SettableMappedIndexPreference.Mapper;
 import com.example.cynosure.SettablePreference.ValueRenderer;
 import java.util.ArrayList;
@@ -76,6 +77,30 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedDialog.put(MIN_SPEED_KEY, MIN_SPEED_DIALOG);
         preferenceKeyAssociatedDialog.put(MAX_SPEED_KEY, MAX_SPEED_DIALOG);
 
+        preferenceKeyAssociatedDefaultValue.put(FIGURE_COUNT_KEY, Wallpaper.DEFAULT_FIGURE_COUNT);
+        preferenceKeyAssociatedDefaultValue.put(EFFECT_TYPE_KEY, Wallpaper.DEFAULT_EFFECT_TYPE);
+        preferenceKeyAssociatedDefaultValue.put(MIN_TRANSPARENCY_KEY, Wallpaper.DEFAULT_MIN_TRANSPARENCY);
+        preferenceKeyAssociatedDefaultValue.put(MAX_TRANSPARENCY_KEY, Wallpaper.DEFAULT_MAX_TRANSPARENCY);
+        preferenceKeyAssociatedDefaultValue.put(BRIGHTNESS_KEY, Wallpaper.DEFAULT_BRIGHTNESS);
+        preferenceKeyAssociatedDefaultValue.put(MIN_RADIUS_KEY, Wallpaper.DEFAULT_MIN_RADIUS);
+        preferenceKeyAssociatedDefaultValue.put(MAX_RADIUS_KEY, Wallpaper.DEFAULT_MAX_RADIUS);
+        preferenceKeyAssociatedDefaultValue.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.DEFAULT_MIN_OUTLINE_WIDTH);
+        preferenceKeyAssociatedDefaultValue.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.DEFAULT_MAX_OUTLINE_WIDTH);
+        preferenceKeyAssociatedDefaultValue.put(MIN_SPEED_KEY, Wallpaper.DEFAULT_MIN_SPEED);
+        preferenceKeyAssociatedDefaultValue.put(MAX_SPEED_KEY, Wallpaper.DEFAULT_MAX_SPEED);
+
+        preferenceKeyAssociatedMaxIndex.put(FIGURE_COUNT_KEY, Wallpaper.FIGURE_COUNT_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(EFFECT_TYPE_KEY, Wallpaper.EFFECT_TYPE_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MIN_TRANSPARENCY_KEY, Wallpaper.MIN_TRANSPARENCY_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MAX_TRANSPARENCY_KEY, Wallpaper.MAX_TRANSPARENCY_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(BRIGHTNESS_KEY, Wallpaper.BRIGHTNESS_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MIN_RADIUS_KEY, Wallpaper.MIN_RADIUS_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MAX_RADIUS_KEY, Wallpaper.MAX_RADIUS_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.MIN_OUTLINE_WIDTH_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.MAX_OUTLINE_WIDTH_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MIN_SPEED_KEY, Wallpaper.MIN_SPEED_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MAX_SPEED_KEY, Wallpaper.MAX_SPEED_MAX_INDEX);
+
         preferenceKeyAssociatedTitle.put(FIGURE_COUNT_KEY, "Количество");
         preferenceKeyAssociatedTitle.put(EFFECT_TYPE_KEY, "Смена эффекта");
         preferenceKeyAssociatedTitle.put(MIN_TRANSPARENCY_KEY, "Минимальная прозрачность");
@@ -88,14 +113,25 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedTitle.put(MIN_SPEED_KEY, "Минимальная скорость");
         preferenceKeyAssociatedTitle.put(MAX_SPEED_KEY, "Максимальная скорость");
 
-      }
+        preferenceKeyAssociatedMapper.put(FIGURE_COUNT_KEY, Wallpaper.FIGURE_COUNT_MAPPER);
+        preferenceKeyAssociatedMapper.put(EFFECT_TYPE_KEY, Wallpaper.EFFECT_TYPE_MAPPER);
+        preferenceKeyAssociatedMapper.put(MIN_TRANSPARENCY_KEY, Wallpaper.MIN_TRANSPARENCY_MAPPER);
+        preferenceKeyAssociatedMapper.put(MAX_TRANSPARENCY_KEY, Wallpaper.MAX_TRANSPARENCY_MAPPER);
+        preferenceKeyAssociatedMapper.put(BRIGHTNESS_KEY, Wallpaper.BRIGHTNESS_MAPPER);
+        preferenceKeyAssociatedMapper.put(MIN_RADIUS_KEY, Wallpaper.MIN_RADIUS_MAPPER);
+        preferenceKeyAssociatedMapper.put(MAX_RADIUS_KEY, Wallpaper.MAX_RADIUS_MAPPER);
+        preferenceKeyAssociatedMapper.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.MIN_OUTLINE_WIDTH_MAPPER);
+        preferenceKeyAssociatedMapper.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.MAX_OUTLINE_WIDTH_MAPPER);
+        preferenceKeyAssociatedMapper.put(MIN_SPEED_KEY, Wallpaper.MIN_SPEED_MAPPER);
+        preferenceKeyAssociatedMapper.put(MAX_SPEED_KEY, Wallpaper.MAX_SPEED_MAPPER);
+    }
 
     private String currentKey;
 
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        getPreferenceManager().setSharedPreferencesName(Wallpaper.SHARED_PREFS_NAME);
         addPreferencesFromResource(R.xml.cynosure_settings);
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
@@ -195,7 +231,7 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
             ps = getPreferenceScreen();
             sp = (SettableMappedIndexPreference)ps.findPreference(currentKey);
             sp.setValue(Integer.toString(magnitude));
-         }
+        }
     };
 
     private class MagnitudeDialog extends AlertDialog implements OnSeekBarChangeListener {
@@ -243,10 +279,12 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         }
 
         @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {}
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
 
         @Override
-        public void onStopTrackingTouch(SeekBar seekBar) { }
+        public void onStopTrackingTouch(SeekBar seekBar) {
+        }
 
 
     }
