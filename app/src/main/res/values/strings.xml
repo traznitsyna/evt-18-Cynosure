@@ -1,7 +1,7 @@
 <resources>
-    <string  name = "wallpapers" > Живые обои </string >
+    <string  name = "wallpapers" > Живые обои "Cynosure" </string >
 
-    <string  name = "wallpaper_cynosure" >  Живые обои - Cynosure </string >
+    <string  name = "wallpaper_cynosure" >  Живые обои "Cynosure" </string >
 
-    <string  name = "cynosure_settings" > Настройки </string >
+    <string  name = "cynosure_settings" > Настройки живых обоев "Cynosure" </string >
 </resources>

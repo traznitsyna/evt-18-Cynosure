@@ -15,20 +15,17 @@
 	<PreferenceCategory
 		android:title="Цвет">
 		<com.example.cynosure.SettableMappedIndexPreference
-			android:widgetLayout="@layout/settable_preference"
 			android:key="min_transparency"
-			android:title="Минимальная прозрачность">
-		</com.example.cynosure.SettableMappedIndexPreference>
+			android:title="Минимальная прозрачность"
+			android:widgetLayout="@layout/settable_preference"></com.example.cynosure.SettableMappedIndexPreference>
 		<com.example.cynosure.SettableMappedIndexPreference
-			android:widgetLayout="@layout/settable_preference"
 			android:key="max_transparency"
-			android:title="Максимальная прозрачность">
-		</com.example.cynosure.SettableMappedIndexPreference>
+			android:title="Максимальная прозрачность"
+			android:widgetLayout="@layout/settable_preference"></com.example.cynosure.SettableMappedIndexPreference>
 		<com.example.cynosure.SettableMappedIndexPreference
-			android:widgetLayout="@layout/settable_preference"
 			android:key="brightness"
-			android:title="Яркость">
-		</com.example.cynosure.SettableMappedIndexPreference>
+			android:title="Яркость"
+			android:widgetLayout="@layout/settable_preference"></com.example.cynosure.SettableMappedIndexPreference>
 	</PreferenceCategory>
 
 	<PreferenceCategory

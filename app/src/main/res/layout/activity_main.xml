@@ -15,6 +15,7 @@
         android:layout_marginRight="104dp"
         android:layout_marginBottom="80dp"
         android:background="#2C2A2A"
+        android:fontFamily="sans-serif-black"
         android:text="Открыть список обоев"
         android:textColor="@color/white"
         android:textStyle="bold|italic"
@@ -27,7 +28,7 @@
         android:layout_height="477dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginBottom="92dp"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent" />

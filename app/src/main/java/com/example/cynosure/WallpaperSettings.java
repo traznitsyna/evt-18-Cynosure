@@ -132,7 +132,7 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         getPreferenceManager().setSharedPreferencesName(Wallpaper.SHARED_PREFS_NAME);
-        addPreferencesFromResource(R.xml.cynosure_settings);
+        addPreferencesFromResource(R.xml.activity_cynosure_settings);
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         PreferenceScreen rootPS;
@@ -172,7 +172,7 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
     ValueRenderer simpleRenderer = new ValueRenderer() {
         @Override
         public void renderValue(View view, String value) {
-            TextView myTextView = (TextView)view.findViewById(R.id.settable_preference);
+            TextView myTextView = (TextView)view.findViewById(R.id.settable_preference);//расстояние от текста до края экрана
             if (value != null) {
                 myTextView.setText(value);
             }
@@ -238,7 +238,7 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         protected MagnitudeDialog(Context context, final OnMagnitudeSetListener onMagnitudeSetListener, int magnitude) {
             super(context);
             LayoutInflater layoutInflater = LayoutInflater.from(WallpaperSettings.this);
-            final View magnitudeView = layoutInflater.inflate(R.layout.slider_dialog_box, null);
+            final View magnitudeView = layoutInflater.inflate(R.layout.activity_slider_dialog_box, null);
             setView(magnitudeView);
             TextView magnitudeValue = (TextView)magnitudeView.findViewById(R.id.magnitudeValue);
             int defaultValue = (Integer)preferenceKeyAssociatedDefaultValue.get(currentKey);
