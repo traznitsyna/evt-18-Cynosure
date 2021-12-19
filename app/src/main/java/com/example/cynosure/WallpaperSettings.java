@@ -27,8 +27,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
     public static final String MIN_TRANSPARENCY_KEY = "min_transparency";
     public static final String MAX_TRANSPARENCY_KEY = "max_transparency";
     public static final String BRIGHTNESS_KEY = "brightness";
-    public static final String MIN_RADIUS_KEY = "min_radius";
-    public static final String MAX_RADIUS_KEY = "max_radius";
+    public static final String MIN_SIZE_KEY = "min_size";
+    public static final String MAX_SIZE_KEY = "max_size";
     public static final String MIN_OUTLINE_WIDTH_KEY = "min_outline_width";
     public static final String MAX_OUTLINE_WIDTH_KEY = "max_outline_width";
     public static final String MIN_SPEED_KEY = "min_speed";
@@ -39,8 +39,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
     private static final int MIN_TRANSPARENCY_DIALOG = 102;
     private static final int MAX_TRANSPARENCY_DIALOG = 103;
     private static final int BRIGHTNESS_DIALOG = 104;
-    private static final int MIN_RADIUS_DIALOG = 105;
-    private static final int MAX_RADIUS_DIALOG = 106;
+    private static final int MIN_SIZE_DIALOG = 105;
+    private static final int MAX_SIZE_DIALOG = 106;
     private static final int MIN_OUTLINE_WIDTH_DIALOG = 107;
     private static final int MAX_OUTLINE_WIDTH_DIALOG = 108;
     private static final int MIN_SPEED_DIALOG = 109;
@@ -58,8 +58,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeys.add(MIN_TRANSPARENCY_KEY);
         preferenceKeys.add(MAX_TRANSPARENCY_KEY);
         preferenceKeys.add(BRIGHTNESS_KEY);
-        preferenceKeys.add(MIN_RADIUS_KEY);
-        preferenceKeys.add(MAX_RADIUS_KEY);
+        preferenceKeys.add(MIN_SIZE_KEY);
+        preferenceKeys.add(MAX_SIZE_KEY);
         preferenceKeys.add(MIN_OUTLINE_WIDTH_KEY);
         preferenceKeys.add(MAX_OUTLINE_WIDTH_KEY);
         preferenceKeys.add(MIN_SPEED_KEY);
@@ -70,8 +70,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedDialog.put(MIN_TRANSPARENCY_KEY, MIN_TRANSPARENCY_DIALOG);
         preferenceKeyAssociatedDialog.put(MAX_TRANSPARENCY_KEY, MAX_TRANSPARENCY_DIALOG);
         preferenceKeyAssociatedDialog.put(BRIGHTNESS_KEY, BRIGHTNESS_DIALOG);
-        preferenceKeyAssociatedDialog.put(MIN_RADIUS_KEY, MIN_RADIUS_DIALOG);
-        preferenceKeyAssociatedDialog.put(MAX_RADIUS_KEY, MAX_RADIUS_DIALOG);
+        preferenceKeyAssociatedDialog.put(MIN_SIZE_KEY, MIN_SIZE_DIALOG);
+        preferenceKeyAssociatedDialog.put(MAX_SIZE_KEY, MAX_SIZE_DIALOG);
         preferenceKeyAssociatedDialog.put(MIN_OUTLINE_WIDTH_KEY, MIN_OUTLINE_WIDTH_DIALOG);
         preferenceKeyAssociatedDialog.put(MAX_OUTLINE_WIDTH_KEY, MAX_OUTLINE_WIDTH_DIALOG);
         preferenceKeyAssociatedDialog.put(MIN_SPEED_KEY, MIN_SPEED_DIALOG);
@@ -82,8 +82,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedDefaultValue.put(MIN_TRANSPARENCY_KEY, Wallpaper.DEFAULT_MIN_TRANSPARENCY);
         preferenceKeyAssociatedDefaultValue.put(MAX_TRANSPARENCY_KEY, Wallpaper.DEFAULT_MAX_TRANSPARENCY);
         preferenceKeyAssociatedDefaultValue.put(BRIGHTNESS_KEY, Wallpaper.DEFAULT_BRIGHTNESS);
-        preferenceKeyAssociatedDefaultValue.put(MIN_RADIUS_KEY, Wallpaper.DEFAULT_MIN_RADIUS);
-        preferenceKeyAssociatedDefaultValue.put(MAX_RADIUS_KEY, Wallpaper.DEFAULT_MAX_RADIUS);
+        preferenceKeyAssociatedDefaultValue.put(MIN_SIZE_KEY, Wallpaper.DEFAULT_MIN_SIZE);
+        preferenceKeyAssociatedDefaultValue.put(MAX_SIZE_KEY, Wallpaper.DEFAULT_MAX_SIZE);
         preferenceKeyAssociatedDefaultValue.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.DEFAULT_MIN_OUTLINE_WIDTH);
         preferenceKeyAssociatedDefaultValue.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.DEFAULT_MAX_OUTLINE_WIDTH);
         preferenceKeyAssociatedDefaultValue.put(MIN_SPEED_KEY, Wallpaper.DEFAULT_MIN_SPEED);
@@ -94,8 +94,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedMaxIndex.put(MIN_TRANSPARENCY_KEY, Wallpaper.MIN_TRANSPARENCY_MAX_INDEX);
         preferenceKeyAssociatedMaxIndex.put(MAX_TRANSPARENCY_KEY, Wallpaper.MAX_TRANSPARENCY_MAX_INDEX);
         preferenceKeyAssociatedMaxIndex.put(BRIGHTNESS_KEY, Wallpaper.BRIGHTNESS_MAX_INDEX);
-        preferenceKeyAssociatedMaxIndex.put(MIN_RADIUS_KEY, Wallpaper.MIN_RADIUS_MAX_INDEX);
-        preferenceKeyAssociatedMaxIndex.put(MAX_RADIUS_KEY, Wallpaper.MAX_RADIUS_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MIN_SIZE_KEY, Wallpaper.MIN_SIZE_MAX_INDEX);
+        preferenceKeyAssociatedMaxIndex.put(MAX_SIZE_KEY, Wallpaper.MAX_SIZE_MAX_INDEX);
         preferenceKeyAssociatedMaxIndex.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.MIN_OUTLINE_WIDTH_MAX_INDEX);
         preferenceKeyAssociatedMaxIndex.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.MAX_OUTLINE_WIDTH_MAX_INDEX);
         preferenceKeyAssociatedMaxIndex.put(MIN_SPEED_KEY, Wallpaper.MIN_SPEED_MAX_INDEX);
@@ -106,8 +106,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedTitle.put(MIN_TRANSPARENCY_KEY, "Минимальная прозрачность");
         preferenceKeyAssociatedTitle.put(MAX_TRANSPARENCY_KEY, "Максимальная прозрачность");
         preferenceKeyAssociatedTitle.put(BRIGHTNESS_KEY, "Яркость");
-        preferenceKeyAssociatedTitle.put(MIN_RADIUS_KEY, "Минимальный размер");
-        preferenceKeyAssociatedTitle.put(MAX_RADIUS_KEY, "Максимальный размер");
+        preferenceKeyAssociatedTitle.put(MIN_SIZE_KEY, "Минимальный размер");
+        preferenceKeyAssociatedTitle.put(MAX_SIZE_KEY, "Максимальный размер");
         preferenceKeyAssociatedTitle.put(MIN_OUTLINE_WIDTH_KEY, "Минимальная ширина контура");
         preferenceKeyAssociatedTitle.put(MAX_OUTLINE_WIDTH_KEY, "Максимальная ширина контура");
         preferenceKeyAssociatedTitle.put(MIN_SPEED_KEY, "Минимальная скорость");
@@ -118,8 +118,8 @@ public class WallpaperSettings extends PreferenceActivity implements SharedPrefe
         preferenceKeyAssociatedMapper.put(MIN_TRANSPARENCY_KEY, Wallpaper.MIN_TRANSPARENCY_MAPPER);
         preferenceKeyAssociatedMapper.put(MAX_TRANSPARENCY_KEY, Wallpaper.MAX_TRANSPARENCY_MAPPER);
         preferenceKeyAssociatedMapper.put(BRIGHTNESS_KEY, Wallpaper.BRIGHTNESS_MAPPER);
-        preferenceKeyAssociatedMapper.put(MIN_RADIUS_KEY, Wallpaper.MIN_RADIUS_MAPPER);
-        preferenceKeyAssociatedMapper.put(MAX_RADIUS_KEY, Wallpaper.MAX_RADIUS_MAPPER);
+        preferenceKeyAssociatedMapper.put(MIN_SIZE_KEY, Wallpaper.MIN_SIZE_MAPPER);
+        preferenceKeyAssociatedMapper.put(MAX_SIZE_KEY, Wallpaper.MAX_SIZE_MAPPER);
         preferenceKeyAssociatedMapper.put(MIN_OUTLINE_WIDTH_KEY, Wallpaper.MIN_OUTLINE_WIDTH_MAPPER);
         preferenceKeyAssociatedMapper.put(MAX_OUTLINE_WIDTH_KEY, Wallpaper.MAX_OUTLINE_WIDTH_MAPPER);
         preferenceKeyAssociatedMapper.put(MIN_SPEED_KEY, Wallpaper.MIN_SPEED_MAPPER);

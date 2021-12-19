@@ -32,12 +32,12 @@
 		android:title="Размер">
 		<com.example.cynosure.SettableMappedIndexPreference
 			android:widgetLayout="@layout/settable_preference"
-			android:key="min_radius"
+			android:key="min_size"
 			android:title="Минимальный размер">
 		</com.example.cynosure.SettableMappedIndexPreference>
 		<com.example.cynosure.SettableMappedIndexPreference
 			android:widgetLayout="@layout/settable_preference"
-			android:key="max_radius"
+			android:key="max_size"
 			android:title="Максимальный размер">
 		</com.example.cynosure.SettableMappedIndexPreference>
 		<com.example.cynosure.SettableMappedIndexPreference

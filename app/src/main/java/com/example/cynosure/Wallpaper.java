@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Wallpaper extends WallpaperService {
-	public static final String SHARED_PREFS_NAME = "cynosure_settings";
-	public static final int DEFAULT_FIGURE_COUNT = 30;
+	public static final String SHARED_PREFS_NAME = "cynosure_settings"; //исходные значения параметров настройки
+	public static final int DEFAULT_FIGURE_COUNT = 50;
 	public static final int DEFAULT_EFFECT_TYPE = 0;
-	public static final int DEFAULT_MIN_RADIUS = 9;
-	public static final int DEFAULT_MAX_RADIUS = 49;
+	public static final int DEFAULT_MIN_SIZE= 49;
+	public static final int DEFAULT_MAX_SIZE = 159;
 	public static final int DEFAULT_MIN_OUTLINE_WIDTH = 3;
 	public static final int DEFAULT_MAX_OUTLINE_WIDTH = 15;
 	public static final int DEFAULT_MIN_TRANSPARENCY = 64;
@@ -31,10 +31,10 @@ public class Wallpaper extends WallpaperService {
 	public static final int DEFAULT_BRIGHTNESS = 50;
 	public static final int DEFAULT_FRAME_RATE = 29;
 
-	public static final int FIGURE_COUNT_MAX_INDEX = 990;
+	public static final int FIGURE_COUNT_MAX_INDEX = 990;//предельные значения параметров
 	public static final int EFFECT_TYPE_MAX_INDEX = 2;
-	public static final int MIN_RADIUS_MAX_INDEX = 59;
-	public static final int MAX_RADIUS_MAX_INDEX = 199;
+	public static final int MIN_SIZE_MAX_INDEX = 59;
+	public static final int MAX_SIZE_MAX_INDEX = 199;
 	public static final int MIN_OUTLINE_WIDTH_MAX_INDEX = 90;
 	public static final int MAX_OUTLINE_WIDTH_MAX_INDEX = 90;
 	public static final int MIN_TRANSPARENCY_MAX_INDEX = 255;
@@ -63,7 +63,7 @@ public class Wallpaper extends WallpaperService {
 	public static Mapper FIGURE_COUNT_MAPPER = new Mapper() {
 		@Override
 		public int calculateToInt(int index) {
-			return index + 10;
+			return index;
 		}
 		@Override
 		public float calculateToFloat(int index) {
@@ -102,7 +102,7 @@ public class Wallpaper extends WallpaperService {
 		}
 	};
 
-	public static Mapper MIN_RADIUS_MAPPER = new Mapper() {
+	public static Mapper MIN_SIZE_MAPPER = new Mapper() {
 		@Override
 		public int calculateToInt(int index) {
 			throw new UnsupportedOperationException("В свойствах присутствует несоответствие между различными типами данных");
@@ -118,7 +118,7 @@ public class Wallpaper extends WallpaperService {
 		}
 	};
 
-	public static Mapper MAX_RADIUS_MAPPER = new Mapper() {
+	public static Mapper MAX_SIZE_MAPPER = new Mapper() {
 		@Override
 		public int calculateToInt(int index) {
 			throw new UnsupportedOperationException("В свойствах присутствует несоответствие между различными типами данных");
@@ -266,8 +266,8 @@ public class Wallpaper extends WallpaperService {
 	class FigureEngine extends Engine implements OnSharedPreferenceChangeListener {
 		private int FIGURE_COUNT = FIGURE_COUNT_MAPPER.calculateToInt(DEFAULT_FIGURE_COUNT);
 		private int EFFECT_TYPE = EFFECT_TYPE_MAPPER.calculateToInt(DEFAULT_EFFECT_TYPE);
-		private float MIN_RADIUS = MIN_RADIUS_MAPPER.calculateToFloat(DEFAULT_MIN_RADIUS);
-		private float MAX_RADIUS = MAX_RADIUS_MAPPER.calculateToFloat(DEFAULT_MAX_RADIUS);
+		private float MIN_SIZE = MIN_SIZE_MAPPER.calculateToFloat(DEFAULT_MIN_SIZE);
+		private float MAX_SIZE = MAX_SIZE_MAPPER.calculateToFloat(DEFAULT_MAX_SIZE);
 		private float MIN_OUTLINE_WIDTH = MIN_OUTLINE_WIDTH_MAPPER.calculateToFloat(DEFAULT_MIN_OUTLINE_WIDTH);
 		private float MAX_OUTLINE_WIDTH = MAX_OUTLINE_WIDTH_MAPPER.calculateToFloat(DEFAULT_MAX_OUTLINE_WIDTH);
 		private int MIN_TRANSPARENCY = MIN_TRANSPARENCY_MAPPER.calculateToInt(DEFAULT_MIN_TRANSPARENCY);
@@ -318,10 +318,10 @@ public class Wallpaper extends WallpaperService {
 					WallpaperSettings.FIGURE_COUNT_KEY, Integer.toString(DEFAULT_FIGURE_COUNT)))));
 			EFFECT_TYPE = EFFECT_TYPE_MAPPER.calculateToInt(Integer.parseInt((prefs.getString(
 					WallpaperSettings.EFFECT_TYPE_KEY, Integer.toString(DEFAULT_EFFECT_TYPE)))));
-			MIN_RADIUS = MIN_RADIUS_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
-					WallpaperSettings.MIN_RADIUS_KEY, Integer.toString(DEFAULT_MIN_RADIUS))));
-			MAX_RADIUS = MAX_RADIUS_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
-					WallpaperSettings.MAX_RADIUS_KEY, Integer.toString(DEFAULT_MAX_RADIUS))));
+			MIN_SIZE = MIN_SIZE_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
+					WallpaperSettings.MIN_SIZE_KEY, Integer.toString(DEFAULT_MIN_SIZE))));
+			MAX_SIZE = MAX_SIZE_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
+					WallpaperSettings.MAX_SIZE_KEY, Integer.toString(DEFAULT_MAX_SIZE))));
 			MIN_OUTLINE_WIDTH = MIN_OUTLINE_WIDTH_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
 					WallpaperSettings.MIN_OUTLINE_WIDTH_KEY, Integer.toString(DEFAULT_MIN_OUTLINE_WIDTH))));
 			MAX_OUTLINE_WIDTH = MAX_OUTLINE_WIDTH_MAPPER.calculateToFloat(Integer.parseInt(prefs.getString(
@@ -341,8 +341,8 @@ public class Wallpaper extends WallpaperService {
 		}
 
 		private void fixFlippedMinMax() {
-			if (MIN_RADIUS > MAX_RADIUS) {
-				MAX_RADIUS = MIN_RADIUS;
+			if (MIN_SIZE > MAX_SIZE) {
+				MAX_SIZE = MIN_SIZE;
 			}
 			if (MIN_OUTLINE_WIDTH > MAX_OUTLINE_WIDTH) {
 				MAX_OUTLINE_WIDTH = MIN_OUTLINE_WIDTH;
@@ -422,9 +422,9 @@ public class Wallpaper extends WallpaperService {
 
 				figure.radius = figure.radius + figure.radiusdelta;
 				if (
-						(figure.radiusdelta > 0.0f && figure.radius > MAX_RADIUS)
+						(figure.radiusdelta > 0.0f && figure.radius > MAX_SIZE)
 								||
-								(figure.radiusdelta < 0.0f && figure.radius < MIN_RADIUS))
+								(figure.radiusdelta < 0.0f && figure.radius < MIN_SIZE))
 				{
 					figure.radiusdelta = -figure.radiusdelta;
 					figure.radius = figure.radius + figure.radiusdelta;
@@ -476,7 +476,7 @@ public class Wallpaper extends WallpaperService {
 		//Настройка переменных для создания фигур
 		private Figure createShape(float x, float y) {
 			Figure figure = new Figure();
-			figure.radius = MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * random.nextFloat();
+			figure.radius = MIN_SIZE + (MAX_SIZE - MIN_SIZE) * random.nextFloat();
 			figure.strokeWidth = MIN_OUTLINE_WIDTH + (MAX_OUTLINE_WIDTH - MIN_OUTLINE_WIDTH) * random.nextFloat();
 			figure.x = x;
 			figure.y = y;
