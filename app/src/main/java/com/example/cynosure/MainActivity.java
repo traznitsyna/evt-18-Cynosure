@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button).setOnClickListener(v -> { //ВЫБОР ОБОЕВ ПРИ НАЖАТИИ НА КНОПКУ
+        findViewById(R.id.button).setOnClickListener(v -> { //ВЫБОР ЖИВЫХ ОБОЕВ ПРИ НАЖАТИИ НА КНОПКУ
             Intent intent = new Intent();
             intent.setAction(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
             startActivity(intent);

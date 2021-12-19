@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class Wallpaper extends WallpaperService {
 	public static final String SHARED_PREFS_NAME = "cynosure_settings"; //исходные значения параметров настройки
-	public static final int DEFAULT_FIGURE_COUNT = 50;
+	public static final int DEFAULT_FIGURE_COUNT = 200;
 	public static final int DEFAULT_EFFECT_TYPE = 0;
 	public static final int DEFAULT_MIN_SIZE= 49;
 	public static final int DEFAULT_MAX_SIZE = 159;
@@ -340,7 +340,7 @@ public class Wallpaper extends WallpaperService {
 		    createShapes();
 		}
 
-		private void fixFlippedMinMax() {
+		private void fixFlippedMinMax() { //Если минимальные значения параметров больше максимальных, то они приравниваются к друг другу
 			if (MIN_SIZE > MAX_SIZE) {
 				MAX_SIZE = MIN_SIZE;
 			}
@@ -602,7 +602,7 @@ public class Wallpaper extends WallpaperService {
 	}
 
 
-
+//переменные
 	public static class Figure {
 		public int strokeColor;
 		public int strokeColor2;
